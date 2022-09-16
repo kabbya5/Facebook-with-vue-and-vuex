@@ -6,12 +6,12 @@ import UserProflie from './views/users/Show.vue';
 const routes = [
   {
     path: "/home", name: "home", component: NewsFeed,
-      // meta:{title:'Facebook'}
+      meta:{title:'News Feed'}
   },
   {
     path: "/profile/:userId", name:"userProfle", 
       component: UserProflie, 
-      // meta:{title:'Facebook/Profile'}
+      meta:{title:'Profile'}
   },
 
 ];
@@ -20,10 +20,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-router.beforeEach((to, from, next) =>{
-document.title =`Facebok/${to.name}` 
-  next()
-});
+// router.beforeEach((to, from, next) =>{
+// document.title =`Facebok/${to.name}` 
+//   next()
+// });
 
 export default router;
 

@@ -23,7 +23,7 @@
         <router-link :to="'/profile/' + authUser" class="px-6 border-b-2 transition duration-300 hover:border-blue-600 h-full flex items-center">
           <img class="w-8 h-8 object-cover rounded-full" src="https://static.remove.bg/remove-bg-web/3d75df900686714aa0c3f2ac38a019cdc089943e/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" alt="">
         </router-link>
-        <router-link to="/" class="px-6 border-b-2 transition duration-300 hover:border-blue-600 h-full flex items-center">
+        <router-link to="/home" class="px-6 border-b-2 transition duration-300 hover:border-blue-600 h-full flex items-center">
           <i class="fa-brands fa-facebook-messenger fa-2x"></i>
         </router-link>
       </div>

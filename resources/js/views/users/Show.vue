@@ -16,9 +16,15 @@
                 </p>
             </div>
             <div class="absolute flex items-center bottom-[70px] right-0 mr-12 z-20">
-               <button v-if="currentUserId != user.id" class="py-1 px-3 bg-gray-200 text-black font-semibold rounded capitalize
-                    transition duration hover:bg-gray-400">
-                    add friend 
+               <button  
+                    class="
+                        py-1 px-3 bg-gray-200 text-black 
+                        font-semibold rounded capitalize
+                        transition duration hover:bg-gray-400
+                    "
+                    @click="$store.dispatch('sendFriendRequest'), $route.params.userId"
+                    >
+                    {{ friendButtonText }} 
                </button>
             </div>
         </div>
@@ -28,10 +34,11 @@
         </div>
     </div>
 </template>
-
+ 
 
 <script>
     import Post from '../../components/Post.vue';
+    import {mapGetters} from 'vuex';
 export default ({
     name: "Show",
     components:{
@@ -39,13 +46,18 @@ export default ({
     },
     data: () =>{
         return{ 
-            currentUserId : document.querySelector("meta[name='user-id']").getAttribute('content'),
-            user: [],
-            posts: [],  
+           user:[],
+           posts:[],
         }
+    },
+    computed:{
+        ...mapGetters({
+            friendButtonText: 'friendButtonText'
+        })
     },
    
     mounted(){
+        //this.$store.dispatch('fetchUser', this.$route.params.userId)
         axios.get('/api/profile/' + this.$route.params.userId )
         .then(res =>{
             this.user = res.data[0];
@@ -56,5 +68,6 @@ export default ({
             console.log('Unable to Fatch data');
         });
     }
+    
 })
 </script>
