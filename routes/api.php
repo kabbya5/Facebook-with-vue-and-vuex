@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\FriendRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/posts',[FacebookController::class,'posts']);
 Route::get('/profile/{id}',[FacebookController::class,'userProfile'])->name('user.profile');
+
+// Route::controller(FriendRequestController::class)->group(function (){
+//     Route::post('/api/send-friend-request/{id}','sendFriendRequest');
+//     Route::post('/api/accept-fiend-request/{id}', 'acceptFriendRequest');
+// });
+
+Route::post('/send-friend-request',[FriendRequestController::class,'sendFriendRequest'])->name('send.friend');

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Friend;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class FacebookController extends Controller
 {
@@ -14,8 +16,22 @@ class FacebookController extends Controller
     }
 
     public function userProfile($id){
-        $user = User::find($id);
+
+        if(Auth::check()){
+            $userId = Auth::id();
+        }else{
+            $userId = 11;
+        }
+        $user = User::with('friends')->where('id',$id)->first();
         $posts = Post::with('user')->where('user_id',$id)->get();
-        return response()->json([$user,$posts]);
+        $friendShip = Friend::where('user_id', $userId)->where('friend_id', $id)->first();
+
+        return response()->json([
+            $user, $posts, $friendShip, 
+        ]);
+    }
+
+    public function form (){
+        return view('form');
     }
 }

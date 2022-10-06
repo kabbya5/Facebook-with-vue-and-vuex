@@ -2,7 +2,7 @@
   <div id="flex flex-col flex-1 h-screen overflow-y-hidden">
     <Nav/>
     <div class="overflow-x-hidden w-full">
-      <router-view> </router-view>
+      <router-view :key="$route.fullPath"> </router-view>
     </div>
   </div>
 </template>

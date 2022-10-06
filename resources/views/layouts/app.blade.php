@@ -12,6 +12,7 @@
     <meta name="description" content="hwo">
 
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">  
 
     <title>{{ config('app.name', 'Facebook') }}</title>
 
@@ -26,7 +27,7 @@
     @if (Auth::check()) 
         <meta name="user-id" content="{{ Auth::user()->id }}">
     @else
-        <meta name="user-id" content="1">
+        <meta name="user-id" content="11">
 
     @endif 
     <!-- Scripts -->
